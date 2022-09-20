@@ -19,7 +19,7 @@ describe('Получение аэропорта по ID', () => {
   })
 
   // негативная проверка при отправке несуществующего ID аэропорта
-  test.only('Возвращение ошибки при отправке некорректного ID', async () => {
+  test('Возвращение ошибки при отправке некорректного ID', async () => {
     const result = await airportGap.getAirportById('ФЫВ')
     expect(result.code).toBe('ERR_UNESCAPED_CHARACTERS')
   })
