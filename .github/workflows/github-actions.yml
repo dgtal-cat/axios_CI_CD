@@ -26,3 +26,4 @@ jobs:
           name: report
           if-no-files-found: error
           path: report.html
+          path: jest-html-reporters-attach\report\index.js
