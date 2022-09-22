@@ -16,15 +16,15 @@ jobs:
       - name: Install modules
         run: npm ci
 
-      - name: Bot notify on Tests starts
-        run: 'curl -X GET https://api.telegram.org/bot5417153457:AAHk57L3al98xM6KLHctHJffRicS4CpbO1k/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "-1001783403066","text": "Tests STARTS!"}'''
+      - name: Bot notify - Tests STARTS
+        run: 'curl -X GET https://api.telegram.org/bot$BOT_TOKEN/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "$CHAT_ID","text": "Tests STARTS!"}'''
 
       - name: Run tests
         continue-on-error: true
         run: npm test
 
-      - name: Bot notify on Tests starts
-        run: 'curl -X GET https://api.telegram.org/bot5417153457:AAHk57L3al98xM6KLHctHJffRicS4CpbO1k/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "-1001783403066","text": "Testing DONE!"}'''
+      - name: Bot notify - Tests DONE
+        run: 'curl -X GET https://api.telegram.org/bot$BOT_TOKEN/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "$CHAT_ID","text": "Testing DONE!"}'''
 
       - name: Use the upload artifact GitHub Action
         uses: actions/upload-artifact@v3
