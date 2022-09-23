@@ -1,6 +1,8 @@
 name: Tests
 
-on: [push]
+on:
+  push:
+    branch: main
 
 permissions:
   contents: read
@@ -17,9 +19,6 @@ jobs:
         with:
           node-version: 16
           cache: npm
-
-      - name: Setup Pages
-        uses: actions/configure-actions@v1
 
       - name: Install modules
         run: npm ci
@@ -42,9 +41,3 @@ jobs:
           path: |
             report.html
             jest-html-reporters-attach
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: action/deploy-pages@v1
-        with:
-          folder: build
