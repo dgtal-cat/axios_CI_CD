@@ -4,10 +4,10 @@ on:
   push:
     branch: main
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
 
 jobs:
   test:
@@ -20,20 +20,20 @@ jobs:
           node-version: 16
           cache: npm
 
-      - name: Install modules
+      - name: Install modules ⚙️
         run: npm ci
 
-      - name: Bot notify - Tests STARTS
+      - name: Bot notify - Tests STARTS ✉️
         run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "Tests STARTS!"}'''
 
-      - name: Run tests
+      - name: Run tests 🧬
         continue-on-error: true
         run: npm test
 
-      - name: Bot notify - Tests DONE
+      - name: Bot notify - Tests DONE ✉️
         run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "Testing DONE!"}'''
 
-      - name: Use the upload artifact GitHub Action
+      - name: Use the upload artifact GitHub Action 📦
         uses: actions/upload-artifact@v3
         with:
           name: report
@@ -41,3 +41,8 @@ jobs:
           path: |
             report.html
             jest-html-reporters-attach
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: jest-html-reporters-attach
