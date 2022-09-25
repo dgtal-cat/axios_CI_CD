@@ -39,4 +39,4 @@ jobs:
           folder: html-report
 
       - name: Bot notify - link to html report ✉️
-        run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "Link to HTML report - https://dgtal-cat.github.io/jest_CI_CD/report.html 📊"}'''
+        run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "📊 Link to HTML report - https://dgtal-cat.github.io/jest_CI_CD/report.html"}'''
