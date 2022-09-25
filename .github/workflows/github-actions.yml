@@ -2,11 +2,6 @@ name: Tests
 
 on: push
 
-# permissions:
-#   contents: read
-#   pages: write
-#   id-token: write
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,14 +17,14 @@ jobs:
         run: npm ci
 
       - name: Bot notify - Tests STARTS ✉️
-        run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "Tests STARTS!"}'''
+        run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "Tests STARTS! 🧬"}'''
 
       - name: Run tests 🧬
         continue-on-error: true
         run: npm test
 
       - name: Bot notify - Tests DONE ✉️
-        run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "Testing DONE!"}'''
+        run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "Testing DONE! 🆗"}'''
 
       - name: Use the upload artifact GitHub Action 📦
         uses: actions/upload-artifact@v3
@@ -42,3 +37,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: html-report
+
+      - name: Bot notify - link to html report ✉️
+        run: 'curl -X GET https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H "Content-Type: application/json" -d ''{"chat_id": "${{secrets.CHAT_ID}}","text": "Link to HTML report - https://dgtal-cat.github.io/jest_CI_CD/report.html 📊"}'''
