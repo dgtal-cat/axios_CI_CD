@@ -1,7 +1,7 @@
 {
   "name": "jscourse",
   "version": "0.0.1",
-  "description": "© Здесь могла бы быть ваша реклама)",
+  "description": "dgtal-cat Jest CI/CD project",
   "scripts": {
     "test": "jest --config jest.local.js --testTimeout=50000"
   },
