@@ -36,9 +36,7 @@ jobs:
         with:
           name: report
           if-no-files-found: error
-          path: |
-            report.html
-            jest-html-reporters-attach
+          path: html-report
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
